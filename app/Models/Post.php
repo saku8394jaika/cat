@@ -27,4 +27,14 @@ class Post extends Model
     {
         return $this->belongsToMany(User::class);
     }
+    protected $fillable = [
+        'category_id',
+        'body',
+        'image',
+        'user_id',
+    ];
+    function getPaginateByLimit(int $limit_count = 5)
+    {
+    return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 }
