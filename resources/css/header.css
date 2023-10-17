@@ -1,0 +1,22 @@
+.header-btn {
+    display: flex;
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 40px;
+}
+
+.header-btn a{
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 0 8px;
+    transition: .2s;
+    text-decoration: none;
+}
+
+.header-btn a:hover {
+    transition: .2s;
+    background-color: black;
+    color: white;
+}
