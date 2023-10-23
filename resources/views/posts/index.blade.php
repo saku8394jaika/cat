@@ -1,6 +1,12 @@
 <x-app-layout>
     <h1>Blog Name</h1>
     <a href='/posts/create'>create</a>
+    <div class='category'>
+        <a href="/">全体</a>
+        @foreach($categories as $category)
+            <a href='/category/{{$category->id}}'>{{$category ->name }}</a>
+        @endforeach
+    </div>
     <div class='posts'>
         @foreach($posts as $post)
         <div class='post'>

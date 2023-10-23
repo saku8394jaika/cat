@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Post $post,Category $category)
     {
-        return view('posts.index')->with(['posts' => $post->get()]);
+        return view('posts.index')->with(['posts' => $post->get(), 'categories' => $category ->get()]);
     }
     
     public function create(Category $category)
