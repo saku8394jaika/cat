@@ -22,11 +22,13 @@ use App\Http\Controllers\CategoryController;
 // });
 
 Route::get('/', [PostController::class, 'index']);
+Route::get('/post/{post}', [PostController::class, 'show']);
 Route::get('/category/{category}', [CategoryController::class, 'index']);
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/posts/create', [PostController::class, 'create']);
     Route::post('/posts', [PostController::class, 'store']);
+    Route::post('post/{post}/comments', [PostController::class, 'comment']);
 });
 
 
