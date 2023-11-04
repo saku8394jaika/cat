@@ -7,6 +7,10 @@
         <p>作成者：{{ $post->user->name }}</p>
         <p>カテゴリー：{{ $post->category->name}}</p>
     </div>
+    <div>
+         <i class="fa-solid fa-fish fa-2xl {{ $post->isLikedBy(Auth::user()) ? "liked" : "" }}" id="like" data-postId="{{ $post->id }}" data-flg="{{ $post->isLikedBy(Auth::user()) }}"></i>
+        <p id ="likeCount">{{ $post->likeCount() }}</p>
+    </div>
     <h2>コメント</h2>
     <form action="/post/{{ $post->id }}/comments" method="POST">
         @csrf
@@ -21,4 +25,5 @@
     <div class="footer">
         <a href="/">戻る</a>
     </div>
+    <script src="https://kit.fontawesome.com/7a09392077.js" crossorigin="anonymous"></script>
 </x-app-layout>

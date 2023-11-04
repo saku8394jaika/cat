@@ -25,7 +25,7 @@ class Post extends Model
     
     public function likes()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class,'likes');
     }
     protected $fillable = [
         'category_id',
@@ -36,5 +36,15 @@ class Post extends Model
     function getPaginateByLimit(int $limit_count = 5)
     {
     return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+     public function isLikedBy($user)
+    {
+        return Like::where('user_id', $user->id)->where('post_id', $this->id)->first() !== null;
+    }
+    
+    public function likeCount()
+    {
+        return Like::where('post_id', $this->id)->count();
     }
 }
