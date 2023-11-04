@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="">
+    <div class="content flex">
         <div class='category m-10 absolute right-[18%]'>
             <a href="/" class="block">全体</a>
             @foreach($categories as $category)
@@ -8,11 +8,10 @@
         </div>
         <div class="relative left-[18%]">
             <h1>Blog Name</h1>
-            <a href='/posts/create'>create</a>
             
             <div class='posts'>
                 @foreach($posts as $post)
-                <div class='post'>
+                <div class='post border-4 mt-2 p-4'>
                     <h3>本文</h3>
                     <p>{{ $post->body }}</p>
                     <div>

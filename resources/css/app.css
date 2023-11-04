@@ -16,3 +16,10 @@ h3 {
 a {
     @apply text-blue-600 underline;
 }
+.liked {
+    color: blue;
+}
+
+.zoom {
+    transform: scale(2);
+}

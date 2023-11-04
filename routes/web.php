@@ -21,14 +21,16 @@ use App\Http\Controllers\CategoryController;
 //     return view('welcome');
 // });
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index'])->name('index');
 Route::get('/post/{post}', [PostController::class, 'show']);
 Route::get('/category/{category}', [CategoryController::class, 'index']);
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::get('/posts/create', [PostController::class, 'create']);
+    Route::get('/posts/create', [PostController::class, 'create'])->name('create');
     Route::post('/posts', [PostController::class, 'store']);
     Route::post('post/{post}/comments', [PostController::class, 'comment']);
+    Route::post('/posts/like', [PostController::class, 'like']);
+    Route::post('/posts/unlike', [PostController::class, 'unlike']);
 });
 
 
@@ -42,6 +44,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
+Route::get('/posts/{post}', [PostController::class ,'show']);
 
 require __DIR__.'/auth.php';

@@ -6,8 +6,10 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Like;
 use Cloudinary;
 use Illuminate\Support\Facades\Auth;
+
 
 class PostController extends Controller
 {
@@ -47,5 +49,19 @@ class PostController extends Controller
         $comment->fill($input)->save();
         
         return redirect('/post/'.$post->id);
+    }
+    
+    public function like(Request $request)
+    {
+        $postId = $request['post'];
+        Auth::user()->like()->attach($postId);
+        return $request;
+    }
+    
+     public function unlike(Request $request)
+    {
+        $postId = $request['post'];
+        Auth::user()->like()->detach($postId);
+        return $request;
     }
 }
