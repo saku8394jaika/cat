@@ -25,6 +25,7 @@ class PostController extends Controller
     
     public function store(Request $request, Post $post)
     {
+        dd($request);
         //cloudinaryへ画像を送信し、画像のURLを$image_urlに代入している
         $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
 
@@ -63,5 +64,11 @@ class PostController extends Controller
         $postId = $request['post'];
         Auth::user()->like()->detach($postId);
         return $request;
+    }
+    
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect('/');
     }
 }

@@ -25,5 +25,20 @@
     <div class="footer">
         <a href="/">戻る</a>
     </div>
+         @if (Auth::id() == $post->user_id)
+            <form action="/posts/destroy/{{$post->id}}" id="deletePost" method="POST">
+                @csrf
+                @method("DELETE")
+                <button type="button" onclick="deletePost()" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">削除</button>
+            </form>
+        @endif
     <script src="https://kit.fontawesome.com/7a09392077.js" crossorigin="anonymous"></script>
+    <script>
+        const deletePost = () => {
+             const deleteForm = document.getElementById('deletePost');
+             if(confirm('削除すると復元できません。\n本当に削除しますか？')){
+                 deleteForm.submit();
+             }
+        }
+    </script>
 </x-app-layout>
