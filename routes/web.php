@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('post/{post}/comments', [PostController::class, 'comment']);
     Route::post('/posts/like', [PostController::class, 'like']);
     Route::post('/posts/unlike', [PostController::class, 'unlike']);
+    Route::delete('/posts/destroy/{post}', [PostController::class, 'destroy']);
 });
 
 
