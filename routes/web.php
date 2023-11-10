@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/posts/unlike', [PostController::class, 'unlike']);
     Route::delete('/posts/destroy/{post}', [PostController::class, 'destroy']);
     Route::get('/mypage',  [MypageController::class, 'index'])->name('mypage');
+    Route::post('/post/{post}/complete', [PostController::class, 'complete']);
+    Route::post('/post/{post}/uncomplete', [PostController::class, 'uncomplete']);
 });
 
 

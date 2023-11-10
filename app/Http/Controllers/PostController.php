@@ -31,6 +31,9 @@ class PostController extends Controller
         $input = $request['post'];
         $input += ['image' => $image_url];
         $input += ['user_id' => Auth::id()];
+        if($input['category_id'] === 2){
+            $input += ['complete' => 1];
+        }
         $post->fill($input)->save();
         
         return redirect('/');
@@ -71,4 +74,17 @@ class PostController extends Controller
         return redirect('/');
     }
     
+    public function complete(Post $post)
+    {
+        $post->complete = 1;
+        $post->save();
+        return redirect('/mypage');
+    }
+    
+    public function uncomplete(Post $post)
+    {
+        $post->complete = 0;
+        $post->save();
+        return redirect('/mypage');
+    }
 }

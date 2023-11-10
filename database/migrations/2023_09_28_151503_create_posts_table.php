@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image', 100);
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();
+            $table->boolean('complete')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
