@@ -3,6 +3,7 @@
 use App\resources\views\posts;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\MypageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 
@@ -32,6 +33,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('/posts/like', [PostController::class, 'like']);
     Route::post('/posts/unlike', [PostController::class, 'unlike']);
     Route::delete('/posts/destroy/{post}', [PostController::class, 'destroy']);
+    Route::get('/mypage',  [MypageController::class, 'index'])->name('mypage');
 });
 
 
@@ -45,6 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/posts/{post}', [PostController::class ,'show']);
+//Route::get('/posts/{post}', [PostController::class ,'show']);
 
 require __DIR__.'/auth.php';
