@@ -1,5 +1,6 @@
 import './like';
 import './bootstrap';
+import './complete';
 
 import Alpine from 'alpinejs';
 
